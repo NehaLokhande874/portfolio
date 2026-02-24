@@ -158,3 +158,43 @@ body {
     .hero h1 { font-size: 2.5rem; }
     .nav-links { display: none; }
 }
+/* Contact Section */
+.contact-container {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.contact-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #00abf0;
+}
+
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-container { flex-direction: column; }
+}
