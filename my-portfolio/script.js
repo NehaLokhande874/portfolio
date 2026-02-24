@@ -1,4 +1,3 @@
-// Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Contact Form Validation
@@ -6,52 +5,43 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevents page from refreshing
+            e.preventDefault(); 
 
-            // Get form inputs
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const message = this.querySelector('textarea').value;
-
+            const nameInput = this.querySelector('input[type="text"]');
+            const emailInput = this.querySelector('input[type="email"]');
+            
             // Simple Logic Validation
-            if (name.length < 2) {
+            if (nameInput.value.length < 2) {
                 alert("Please enter a valid name.");
                 return;
             }
 
-            if (!email.includes("@")) {
+            if (!emailInput.value.includes("@")) {
                 alert("Please enter a valid email address.");
                 return;
             }
 
             // Success Message
-            alert(`Success! Thank you, ${name}. Your message has been sent.`);
-            this.reset(); // Clears the form fields
+            alert(`Success! Thank you, ${nameInput.value}. Your message has been sent.`);
+            this.reset(); 
         });
     }
 
-    // 2. Active Link Highlighting
-    // This detects which page you are on and highlights the nav link
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath.split('/').pop()) {
-            link.classList.add('active');
-        }
-    });
-
-    // 3. Interactive Hover Effect for Project Cards
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = "#007bff";
-            card.style.transform = "translateY(-5px)";
+    // 2. Interactive Hover for Skills and Projects (Day 6 Update)
+    // We use the specific classes from your Day 1-5 code
+    const interactables = document.querySelectorAll('.skill-card, .project-item');
+    
+    interactables.forEach(item => {
+        item.style.transition = "0.3s ease"; // Ensures smooth movement
+        
+        item.addEventListener('mouseenter', () => {
+            item.style.borderColor = "#00abf0"; // Matching your theme
+            item.style.transform = "translateY(-10px)";
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = "transparent";
-            card.style.transform = "translateY(0)";
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.borderColor = "#334155"; // Return to original gray
+            item.style.transform = "translateY(0)";
         });
     });
-
 });
